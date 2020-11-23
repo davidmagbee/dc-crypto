@@ -1,9 +1,13 @@
 import './App.css';
 
+import Footer from './Components/Footer';
+import Header from './Components/Header';
+
 function App() {
   return (
     <div className="App">
-      <h1>DC Crypto</h1>
+      <Header />
+      <Footer />
     </div>
   );
 }
