@@ -1,15 +1,33 @@
-import React from 'react';
-import { getAllStocks } from '../../services/api-helper';
+import React, { useState, useEffect } from 'react';
+import IndividualCrypto from '../IndividualCrypto/IndividualCrypto';
+
+import { getAllStocks, getAllExchanges } from '../../services/api-helper';
 
 const AllCrypto = () => {
+  const [currencies, setCurrencies] = useState([]);
 
-  const getAllData = async() => {
-    const data = await getAllStocks();
-  }
-  getAllData();
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await getAllStocks();
+        console.log(data);
+        setCurrencies(data);
+      } catch(e) { console.log(e) }
+    }
+    fetchData();
+  }, [])
+
   return (
     <>
-      <h4>All Crypto</h4>
+      {currencies ?
+        currencies.map((currency, idx) => {
+          return (
+            <IndividualCrypto currency={currency} key={idx} />
+          )
+        })
+        :
+        <p>Currencies coming soon!</p>
+      }
     </>
   )
 }
