@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   return (
     <>
-      <div class="container">
+      <div className="container">
         <h3>DC Crypto</h3>
         <Link to="/about">About</Link>
         <Link to="/data-viz">Data Viz</Link>

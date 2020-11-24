@@ -1,9 +1,9 @@
 import React from 'react';
 
-const IndividualCrypto = () => {
+const IndividualCrypto = (props) => {
   return (
     <>
-      <h4>Individual Crypto</h4>
+      <h4>{props.currency.asset_id_quote}</h4>
     </>
   )
 }
