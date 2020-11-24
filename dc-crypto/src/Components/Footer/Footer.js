@@ -4,12 +4,11 @@ import './Footer.css';
 const Footer = () => {
   return (
     <>
-      <div class="footer-wrapper">
-        <h3>DC Crypto</h3>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-        <a href="#">Social</a>
-        <a href="#">Social</a>
+      <div class="container">
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/social">Social</a>
+        <a href="/social">Social</a>
       </div>
     </>
   )
