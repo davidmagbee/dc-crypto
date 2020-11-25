@@ -11,12 +11,19 @@ export const getAllStocks = async () => {
   try {
     const resp = await api.get(`/v1/symbols/COINBASE`);
     return resp.data;
-  } catch(e) { console.log(e) }
+  } catch(e) { console.log(e); }
 }
 
 export const getAllExchanges = async() => {
   try {
     const resp = await api.get(`/v1/exchanges`);
     console.log(resp);
-  } catch(e) { console.log(e) }
+  } catch(e) { console.log(e); }
+}
+
+export const getOneStock = async (stock) => {
+  try {
+    const resp = await api.get(`/v1/assets/${stock}`);
+    return resp;
+  } catch(e) { console.log(e); }
 }
