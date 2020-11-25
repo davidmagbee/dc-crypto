@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import IndividualCryptoItem from '../IndividualCryptoItem/IndividualCryptoItem';
 
 import { getAllStocks, getAllExchanges } from '../../services/api-helper';
+import './AllCrypto.css';
 
 const AllCrypto = () => {
   const [currencies, setCurrencies] = useState([]);
@@ -17,7 +18,7 @@ const AllCrypto = () => {
   }, [])
 
   return (
-    <>
+    <div className="crypto-container">
       {currencies ?
         currencies.map((currency, idx) => {
           return (
@@ -27,7 +28,7 @@ const AllCrypto = () => {
         :
         <p>Currencies coming soon!</p>
       }
-    </>
+    </div>
   )
 }
 
