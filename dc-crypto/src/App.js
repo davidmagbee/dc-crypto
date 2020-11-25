@@ -7,7 +7,8 @@ import Contact from './Components/Contact/Contact';
 import Data from './Components/Data/Data';
 import Favorites from './Components/Favorites/Favorites';
 import AllCrypto from './Components/AllCrypto/AllCrypto';
-import IndividualCrypto from './Components/IndividualCrypto/IndividualCrypto';
+import IndividualCryptoPage from './Components/IndividualCryptoPage/IndividualCryptoPage';
+
 import Footer from './Components/Footer/Footer';
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
       } />
       <Route path="/all" render={() =>
         <AllCrypto />
+      } />
+      <Route path="/crypto/:id" render={(props) =>
+        <IndividualCryptoPage id={props.match.params.id}/>
       } />
       <Footer />
     </div>

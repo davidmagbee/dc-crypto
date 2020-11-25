@@ -3,3 +3,4 @@
 /data-viz   => DataViz
 /favorites  => FavCrypto
 /all        => AllCrypto
+/crypto/:id => IndividualCryptoPage
