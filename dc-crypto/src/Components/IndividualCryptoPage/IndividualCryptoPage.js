@@ -8,11 +8,12 @@ const IndividualCryptoPage = (props) => {
     async function fetchData() {
       try {
         const data = await getOneStock(props.id);
+        console.log(data);
         setQuote(data);
       } catch(e) { console.log(e) }
     }
     fetchData();
-  }, []);
+  }, [props.id]);
 
   return (
     <>
@@ -20,7 +21,9 @@ const IndividualCryptoPage = (props) => {
         ?
           <div>
             <p>{quote.data[0].asset_id}</p>
-            <p>Price in USD: {quote.data[0].price_usd}</p>
+            {quote.data[0].asset_id !== "USD" &&
+              <p>Price in USD: {quote.data[0].price_usd}</p>
+            }
             {quote.data[0].type_is_crypto
               ? <p>Is crypto</p>
               : <p>Is not crypto</p>}
