@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import IndividualCrypto from '../IndividualCrypto/IndividualCrypto';
+import IndividualCryptoItem from '../IndividualCryptoItem/IndividualCryptoItem';
 
 import { getAllStocks, getAllExchanges } from '../../services/api-helper';
 
@@ -10,7 +10,6 @@ const AllCrypto = () => {
     async function fetchData() {
       try {
         const data = await getAllStocks();
-        console.log(data);
         setCurrencies(data);
       } catch(e) { console.log(e) }
     }
@@ -22,7 +21,7 @@ const AllCrypto = () => {
       {currencies ?
         currencies.map((currency, idx) => {
           return (
-            <IndividualCrypto currency={currency} key={idx} />
+            <IndividualCryptoItem currency={currency} key={idx} />
           )
         })
         :
