@@ -6,9 +6,9 @@ const IndividualCryptoItem = (props) => {
   return (
     <div className="item-wrapper">
       <Link
-        to={`/crypto/${props.currency.asset_id_quote}`}
+        to={`/crypto/${props.currency.asset_id_base}`}
       >
-        <h4>{props.currency.asset_id_quote}</h4>
+        <h4>{props.currency.asset_id_base}</h4>
       </Link>
     </div>
   )

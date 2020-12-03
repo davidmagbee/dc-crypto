@@ -11,7 +11,21 @@ const AllCrypto = () => {
     async function fetchData() {
       try {
         const data = await getAllStocks();
-        setCurrencies(data);
+        // Quick and dirty object filter
+        // We use the uniqueCrypto object to hold
+        // key value pairs of the asset_id_base values
+        // that we've already encountered.
+        // So, either we don't find the asset_id_base in the
+        // uniqueCrypto object in which case we return it
+        // and add it to the uniqueCrypto object, or we do
+        // find it and we move on to the next key value pair.
+        let uniqueCrypto = {};
+        const filteredCrypto = data
+                                  .filter(obj =>
+                                    !uniqueCrypto[obj.asset_id_base]
+                                    &&
+                                    (uniqueCrypto[obj.asset_id_base] = true))
+        setCurrencies(filteredCrypto);
       } catch(e) { console.log(e) }
     }
     fetchData();
