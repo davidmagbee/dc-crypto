@@ -1,6 +1,7 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
+
+import IndividualCryptoItem from '../IndividualCryptoItem/IndividualCryptoItem';
 
 const Favorites = (props) => {
   return (
@@ -11,15 +12,12 @@ const Favorites = (props) => {
         <>
           {props.user.favorites.map((favorite, key) => {
             return (
-              <div className="favorites-wrapper">
-                <Link
-                  to={`/crypto/${favorite.currency.asset_id_base}`}
-                >
-                  <h4>{favorite.currency.asset_id_base}</h4>
-                </Link>
-              </div>
+              <IndividualCryptoItem
+                currency={favorite}
+                key={key}
+              />
             )
-          })}
+        })}
         </>
       )}
     </>
