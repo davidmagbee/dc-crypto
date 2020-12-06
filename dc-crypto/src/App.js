@@ -28,6 +28,11 @@ function App() {
   const handleLogin = (userData) => {
     setCurrentUser(userData);
   }
+
+  const addFavorite = (favorite) => {
+    currentUser.favorites.push(favorite);
+  }
+
   return (
     <div className="App">
       <Header />
@@ -44,10 +49,20 @@ function App() {
         <Favorites user={currentUser} />
       } />
       <Route path="/all" render={() =>
-        <AllCrypto />
+        <AllCrypto
+          addFavorite={addFavorite}
+          favorites={currentUser}
+        />
       } />
+      {/**
+        Future refactor: update to useParams hook provided by react-router
+        instead of props.match.params.id
+      */}
       <Route path="/crypto/:id" render={(props) =>
-        <IndividualCryptoPage id={props.match.params.id}/>
+        <IndividualCryptoPage
+          id={props.match.params.id}
+          addFavorite={addFavorite}
+        />
       } />
       <Footer />
     </div>
