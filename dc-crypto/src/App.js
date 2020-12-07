@@ -13,7 +13,8 @@ import IndividualCryptoPage from './Components/IndividualCryptoPage/IndividualCr
 import Footer from './Components/Footer/Footer';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState({name: "", favorites: []});
+  const [userFavorites, setUserFavorites] = useState([]);
 
   // Currently mocking a signed in user
   useEffect(() => {
@@ -30,7 +31,7 @@ function App() {
   }
 
   const addFavorite = (favorite) => {
-    currentUser.favorites.push(favorite);
+    setUserFavorites([...userFavorites, favorite]);
   }
 
   return (
@@ -46,12 +47,13 @@ function App() {
         <Data />
       } />
       <Route path="/favorites" render={() =>
-        <Favorites user={currentUser} />
+        <Favorites user={currentUser} favorites={userFavorites}/>
       } />
       <Route path="/all" render={() =>
         <AllCrypto
           addFavorite={addFavorite}
           user={currentUser}
+          favorites={userFavorites}
         />
       } />
       {/**
