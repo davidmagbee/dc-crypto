@@ -40,7 +40,7 @@ const AllCrypto = (props) => {
               currency={currency.asset_id_base}
               key={idx}
               addFavorite={props.addFavorite}
-              favorites={props.favorites}
+              favorites={props.user.favorites}
             />
           )
         })
