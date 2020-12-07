@@ -26,9 +26,11 @@ const IndividualCryptoPage = (props) => {
             {quote.data[0].type_is_crypto
               ? <p>Is crypto</p>
               : <p>Is not crypto</p>}
-            <button
-              onClick={() => props.addFavorite(props.id)}
-            >Add Favorite</button>
+            {!props.user.favorites.includes(quote.data[0].asset_id) && (
+              <button
+                onClick={() => props.addFavorite(props.id)}
+              >Add Favorite</button>            
+            )}
           </div>
         : <p>Data coming soon</p>
       }
