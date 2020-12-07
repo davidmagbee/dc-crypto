@@ -7,14 +7,14 @@ const Favorites = (props) => {
   return (
     <>
       <div className="crypto-container">
-        {props.user && props.user.favorites && (
+        {props.user && props.favorites && (
           <>
-            {props.user.favorites.map((favorite, key) => {
+            {props.favorites.map((favorite, key) => {
               return (
                 <IndividualCryptoItem
                   currency={favorite}
                   key={key}
-                  favorites={props.user.favorites}
+                  favorites={props.favorites}
                 />
               )
           })}

@@ -4,7 +4,7 @@ import IndividualCryptoItem from '../IndividualCryptoItem/IndividualCryptoItem';
 import { getAllStocks, getAllExchanges } from '../../services/api-helper';
 import './AllCrypto.css';
 
-const AllCrypto = (props) => {
+const AllCrypto = ({user, favorites, addFavorite}) => {
   const [currencies, setCurrencies] = useState([]);
 
   useEffect(() => {
@@ -39,8 +39,8 @@ const AllCrypto = (props) => {
             <IndividualCryptoItem
               currency={currency.asset_id_base}
               key={idx}
-              addFavorite={props.addFavorite}
-              favorites={props.user.favorites}
+              addFavorite={addFavorite}
+              favorites={favorites}
             />
           )
         })
