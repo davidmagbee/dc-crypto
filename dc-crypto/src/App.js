@@ -14,7 +14,7 @@ import Footer from './Components/Footer/Footer';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({name: "", favorites: []});
-  console.log(currentUser);
+
   // Currently mocking a signed in user
   useEffect(() => {
     const userData = {
