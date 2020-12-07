@@ -6,20 +6,21 @@ import IndividualCryptoItem from '../IndividualCryptoItem/IndividualCryptoItem';
 const Favorites = (props) => {
   return (
     <>
-      <h4>Favorites</h4>
-      {props.user && <h5>{props.user.name}</h5>}
-      {props.user && props.user.favorites && (
-        <>
-          {props.user.favorites.map((favorite, key) => {
-            return (
-              <IndividualCryptoItem
-                currency={favorite}
-                key={key}
-              />
-            )
-        })}
-        </>
-      )}
+      <div className="crypto-container">
+        {props.user && props.user.favorites && (
+          <>
+            {props.user.favorites.map((favorite, key) => {
+              return (
+                <IndividualCryptoItem
+                  currency={favorite}
+                  key={key}
+                  favorites={props.user.favorites}
+                />
+              )
+          })}
+          </>
+        )}
+      </div>
     </>
   )
 }
