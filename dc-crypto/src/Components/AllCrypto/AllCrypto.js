@@ -6,13 +6,14 @@ import './AllCrypto.css';
 
 const AllCrypto = ({user, favorites, addFavorite}) => {
   const [currencies, setCurrencies] = useState([]);
+  const [ error, setError ] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const data = await getAllStocks();
         /**
-         * Quick and dirty object filter
+         * Quick and dirty object filter:::
          * We use the uniqueCrypto object to hold
          * key value pairs of the asset_id_base values
          * that we've already encountered.
@@ -21,11 +22,15 @@ const AllCrypto = ({user, favorites, addFavorite}) => {
          * and add it to the uniqueCrypto object, or we do
          * find it and we move on to the next key value pair.
         */
-        let uniqueCrypto = {};
-        const filteredCrypto = data.filter(obj =>
-            !uniqueCrypto[obj.asset_id_base]
-              && (uniqueCrypto[obj.asset_id_base] = true))
-        setCurrencies(filteredCrypto);
+        if (data.error) {
+          setError("There was an error loading the crypto's, try again when you have an internet connection!");
+        } else {
+          let uniqueCrypto = {};
+          const filteredCrypto = data.filter(obj =>
+              !uniqueCrypto[obj.asset_id_base]
+                && (uniqueCrypto[obj.asset_id_base] = true))
+          setCurrencies(filteredCrypto);
+        }
       } catch(e) { console.error(e) }
     }
     fetchData();
@@ -47,6 +52,7 @@ const AllCrypto = ({user, favorites, addFavorite}) => {
         :
         <p>Currencies coming soon!</p>
       }
+      {error ? <p>{error}</p> : null}
     </div>
   )
 }
