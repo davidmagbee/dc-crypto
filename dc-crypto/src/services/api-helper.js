@@ -11,7 +11,9 @@ export const getAllStocks = async () => {
   try {
     const resp = await api.get(`/v1/symbols/COINBASE`);
     return resp.data;
-  } catch(e) { console.log(e); }
+  } catch(e) {
+    return { error: e }
+  }
 }
 
 export const getAllExchanges = async() => {

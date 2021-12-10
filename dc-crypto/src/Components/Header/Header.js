@@ -5,7 +5,7 @@ import './Header.css';
 const Header = () => {
   return (
     <>
-      <div className="container header-container">
+      <div className="container header-container bg-light-blue">
         <h3>DC Crypto</h3>
         <Link to="/about">About</Link>
         <Link to="/data-viz">Data Viz</Link>
